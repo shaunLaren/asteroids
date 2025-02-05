@@ -19,6 +19,8 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
         
+        player.update(dt)
+
         # Black background
         screen.fill((0, 0, 0))
         player.draw(screen)
@@ -27,6 +29,7 @@ def main():
         # Limit frame rate to 60 fps
         # dt - delta time (time between frames)
         dt = clock.tick(60) / 1000
+
 
     
 if __name__ == "__main__":
