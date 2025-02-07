@@ -36,6 +36,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+        
         # Update player (movement)
         updateable.update(dt)
 
@@ -44,9 +45,17 @@ def main():
             if player.collision(asteroid):
                 print("GAME OVER!")
                 running = False
+            
+            # Shots killing asteroids
+            for shot in shots:
+                if shot.collision(asteroid):
+                    shot.kill()
+                    asteroid.split()
+                
         
-        # Black screen
+        # Background colour
         screen.fill((0, 0, 0))
+        
         # Draw objects
         for obj in drawable:
             obj.draw(screen)
